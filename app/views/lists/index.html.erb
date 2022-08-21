@@ -1,23 +1,25 @@
 <div class="container">
   <h1>All the lists</h1>
-
+<ul class="list-inline tabs-underlined">
+  <li>
+    <%= link_to "See Lists", lists_path, class: "tab-underlined active" %>
+  </li>
+  <li>
+    <%= link_to "Add a list", new_list_path, class: "tab-underlined" %>
+  </li>
+</ul>
   <div class="cards">
     <% @lists.each do |list| %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= List::DEFAULT_IMG %>)">
         <h2><%= list.name %></h2>
-          <div>
             <%= link_to list_path(list) do %>
               <button class="btn btn-primary">
                 <i class="fa-solid fa-eye"></i>
               </button>
             <% end %>
-
-
-          <button class="btn btn-danger">
-            <i class="fa-solid fa-trash-can"></i>
-          </button>
-        </div>
-
+            <button class="btn btn-danger text-white">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
       </div>
     <% end %>
   </div>
