@@ -1,0 +1,14 @@
+<div class="container">
+  <h1><%= @list.name %></h1>
+  <div class="cards">
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="card-product">
+      <img src="<%= bookmark.movie.poster_url %>" />
+      <div class="card-product-infos">
+        <h2><%= bookmark.movie.title %></h2>
+        <p><%= bookmark.movie.rating %> / 10</p>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
