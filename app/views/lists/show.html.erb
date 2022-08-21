@@ -33,8 +33,12 @@
         <i class="fa-solid fa-comment"></i>
         <div class="review-content">
           <p><%= review.comment %></p>
-          <p><%= review.rating %></p>
-          <p>Posted: <%= review.created_at.hour %>:<%= review.created_at.min %> <%= "#{review.created_at.day}/#{review.created_at.month}/#{review.created_at.year}" %></p>
+          <p>
+          <% review.rating.times do %>
+            <i class='fa-solid fa-star text-warning'></i>
+          <% end %>
+          </p>
+          <p><%= review.created_at.hour %>:<%= review.created_at.min %> <%= "#{review.created_at.day}/#{review.created_at.month}/#{review.created_at.year}" %></p>
         </div>
       </div>
     <% end %>
@@ -44,7 +48,7 @@
       <div class="review-form">
         <%= simple_form_for [@list, @review] do |f| %>
           <%= f.input :comment %>
-          <%= f.input :rating %>
+          <%= f.input :rating, collection: (1..5).to_a, label: "Rate this list", input_html: {data: {controller: "star-rating"}} %>
           <%= f.submit %>
         <% end %>
       </div>
