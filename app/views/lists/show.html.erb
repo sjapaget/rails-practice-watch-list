@@ -24,4 +24,23 @@
       </div>
     <% end %>
   </div>
+
+  <div class="reviews row mt-1">
+    <% @list.reviews.each do |review| %>
+      <div class="review col-6">
+        <i class="fa-solid fa-comment"></i>
+        <div class="review-content">
+          <p><%= review.comment %></p>
+          <p><%= review.rating %></p>
+          <p>Posted: <%= review.created_at.hour %>:<%= review.created_at.min %> <%= "#{review.created_at.day}/#{review.created_at.month}/#{review.created_at.year}" %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="col-6">
+      <div class="review-form">
+      Review Form here
+      </div>
+    </div>
+  </div>
 </div>
