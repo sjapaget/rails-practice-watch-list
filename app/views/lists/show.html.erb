@@ -25,9 +25,11 @@
     <% end %>
   </div>
 
-  <div class="reviews row mt-1">
+<div class="row mt-2">
+  <div class="reviews col-6">
+    <h3>Reviews</h3>
     <% @list.reviews.each do |review| %>
-      <div class="review col-6">
+    <div class="review">
         <i class="fa-solid fa-comment"></i>
         <div class="review-content">
           <p><%= review.comment %></p>
@@ -36,11 +38,16 @@
         </div>
       </div>
     <% end %>
+  </div>
 
-    <div class="col-6">
+    <div class="col-6 bg-secondary bg-gradient p-1">
       <div class="review-form">
-      Review Form here
+        <%= simple_form_for [@list, @review] do |f| %>
+          <%= f.input :comment %>
+          <%= f.input :rating %>
+          <%= f.submit %>
+        <% end %>
       </div>
     </div>
-  </div>
 </div>
+  </div>

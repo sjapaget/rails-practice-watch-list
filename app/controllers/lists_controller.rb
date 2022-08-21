@@ -1,13 +1,13 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
-    
     # Empty instance for simple_form
     @list = List.new
   end
 
   def show
     @list = List.find(params[:id])
+    @review = Review.new
   end
 
   def new
